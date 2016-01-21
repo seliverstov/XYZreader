@@ -15,6 +15,6 @@
         android:textColor="@color/ltgray"
         android:textColorLink="@color/theme_accent"
         android:textSize="@dimen/detail_body_text_size"
-        android:text="123"
+        android:text=""
         android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier" />
 </android.support.v4.widget.NestedScrollView>

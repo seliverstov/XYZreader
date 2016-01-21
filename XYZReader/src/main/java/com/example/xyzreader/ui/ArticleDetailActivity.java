@@ -241,8 +241,11 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         @Override
         public Fragment getItem(int position) {
             mCursor.moveToPosition(position);
-            return new ArticleBody(mCursor.getString(ArticleLoader.Query.BODY));
-            //return new ArticleDetailFragment.newInstance(mCursor.getLong(ArticleLoader.Query._ID));
+            Bundle args = new Bundle();
+            args.putString(ArticleBody.TEXT,mCursor.getString(ArticleLoader.Query.BODY));
+            ArticleBody fragment = new ArticleBody();
+            fragment.setArguments(args);
+            return fragment;
         }
 
         @Override
