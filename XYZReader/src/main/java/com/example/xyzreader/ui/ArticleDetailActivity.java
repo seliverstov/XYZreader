@@ -3,13 +3,16 @@ package com.example.xyzreader.ui;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v13.app.FragmentStatePagerAdapter;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -48,6 +51,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
 
     private Toolbar mToolbar;
     private CollapsingToolbarLayout mCollapsingToolbar;
+    private FloatingActionButton mShareFab;
     private ImageView mPhoto;
     private TextView mTitle;
     private TextView mByline;
@@ -101,6 +105,8 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
 
             }
         });
+
+        mShareFab = (FloatingActionButton)findViewById(R.id.share_fab);
 
         getLoaderManager().initLoader(0, null, this).forceLoad();
 
@@ -208,6 +214,15 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         Picasso.with(this).load(mCursor.getString(ArticleLoader.Query.PHOTO_URL)).into(mPhoto);
         mCollapsingToolbar.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
         mCollapsingToolbar.setExpandedTitleTextAppearance(R.style.TransparentText);
+        mShareFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(ArticleDetailActivity.this)
+                        .setType("text/plain")
+                        .setText(mCursor.getString(ArticleLoader.Query.TITLE))
+                        .getIntent(), getString(R.string.action_share)));
+            }
+        });
     }
 
 
