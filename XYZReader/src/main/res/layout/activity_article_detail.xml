@@ -23,10 +23,10 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             >
 
-            <ImageView
+            <com.example.xyzreader.ui.ArticlePhotoImageView
                 android:id="@+id/article_photo"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/detail_photo_height"
+                android:layout_height="0dp"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
                 />
@@ -36,11 +36,12 @@
                 android:id="@+id/meta_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#333"
+                android:background="@android:color/transparent"
                 android:layout_gravity="bottom"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/detail_inner_horiz_margin"
                 android:paddingRight="@dimen/detail_inner_horiz_margin"
+                android:paddingBottom="4dp"
                 app:layout_collapseMode="parallax">
 
                 <TextView
@@ -50,7 +51,6 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
                     android:fontFamily="sans-serif-condensed"
-                    android:textColor="#fff"
                     android:textStyle="bold"
                     android:textSize="@dimen/detail_title_text_size"
                     android:lineSpacingMultiplier="0.9" />
@@ -59,8 +59,7 @@
                     android:id="@+id/article_byline"
                     style="?android:attr/textAppearanceSmall"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#8fff" />
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <android.support.v7.widget.Toolbar

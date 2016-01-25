@@ -196,8 +196,8 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
-        mCursor = null;
-        mPagerAdapter.notifyDataSetChanged();
+        /*mCursor = null;
+        mPagerAdapter.notifyDataSetChanged();*/
     }
 
     private void onPageChanged(int page){
