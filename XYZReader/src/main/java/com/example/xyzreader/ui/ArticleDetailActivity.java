@@ -221,7 +221,6 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
                         + " by <font color='#ffffff'>"
                         + mCursor.getString(ArticleLoader.Query.AUTHOR)
                         + "</font>"));
-        mPhoto.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
         Picasso.with(this).load(mCursor.getString(ArticleLoader.Query.PHOTO_URL)).into(mPhoto);
         mCollapsingToolbar.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
         mCollapsingToolbar.setExpandedTitleTextAppearance(R.style.TransparentText);
