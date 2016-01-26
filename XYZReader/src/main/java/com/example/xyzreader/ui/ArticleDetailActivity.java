@@ -33,6 +33,8 @@ import com.squareup.picasso.Picasso;
 public class ArticleDetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = ArticleDetailActivity.class.getSimpleName();
 
+    private static final String STORED_SELECTED_ITEM = ArticleDetailActivity.class.getCanonicalName()+".STORED_SELECTED_ITEM";
+
 
     private Cursor mCursor;
     private long mStartId;
@@ -163,6 +165,9 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
                 mStartId = ItemsContract.Items.getItemId(getIntent().getData());
                 mSelectedItemId = mStartId;
             }
+        }else{
+            mStartId = savedInstanceState.getLong(STORED_SELECTED_ITEM);
+            mSelectedItemId = mStartId;
         }
     }
 
@@ -267,5 +272,18 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         public int getCount() {
             return (mCursor != null) ? mCursor.getCount() : 0;
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putLong(STORED_SELECTED_ITEM,mSelectedItemId);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        long id = savedInstanceState.getLong(STORED_SELECTED_ITEM);
+        if (id > 0) mSelectedItemId=id;
     }
 }
