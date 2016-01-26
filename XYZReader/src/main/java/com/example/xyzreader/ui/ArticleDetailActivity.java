@@ -79,6 +79,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         if (actionBar!=null){
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle("");
         }
 
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());

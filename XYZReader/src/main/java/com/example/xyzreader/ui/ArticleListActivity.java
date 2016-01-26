@@ -49,10 +49,11 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar!=null){
-            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setDisplayUseLogoEnabled(true);
-            actionBar.setLogo(ContextCompat.getDrawable(this,R.drawable.logo));
+/*            actionBar.setDisplayUseLogoEnabled(true);
+            actionBar.setIcon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher));*/
+            actionBar.setTitle(getString(R.string.app_name));
         }
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
