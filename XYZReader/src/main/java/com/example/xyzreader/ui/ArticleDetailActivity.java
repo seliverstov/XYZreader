@@ -52,7 +52,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
     private Toolbar mToolbar;
     private CollapsingToolbarLayout mCollapsingToolbar;
     private FloatingActionButton mShareFab;
-    private ImageView mPhoto;
+    private DynamicHeightImageView mPhoto;
     private TextView mTitle;
     private TextView mByline;
 
@@ -70,7 +70,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         mCollapsingToolbar = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
         mViewPager = (ViewPager)findViewById(R.id.view_pager);
 
-        mPhoto = (ImageView)findViewById(R.id.article_photo);
+        mPhoto = (DynamicHeightImageView)findViewById(R.id.article_photo);
         mTitle = (TextView)findViewById(R.id.article_title);
         mByline = (TextView)findViewById(R.id.article_byline);
 
@@ -211,6 +211,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
                         + " by <font color='#ffffff'>"
                         + mCursor.getString(ArticleLoader.Query.AUTHOR)
                         + "</font>"));
+        mPhoto.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
         Picasso.with(this).load(mCursor.getString(ArticleLoader.Query.PHOTO_URL)).into(mPhoto);
         mCollapsingToolbar.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
         mCollapsingToolbar.setExpandedTitleTextAppearance(R.style.TransparentText);
