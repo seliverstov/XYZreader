@@ -15,8 +15,8 @@ import com.example.xyzreader.R;
 /**
  * Created by a.g.seliverstov on 21.01.2016.
  */
-public class ArticleBody extends Fragment{
-    public static final String TEXT = ArticleBody.class.getCanonicalName()+".TEXT";
+public class ArticleBodyFragment extends Fragment{
+    public static final String TEXT = ArticleBodyFragment.class.getCanonicalName()+".TEXT";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -6,8 +6,6 @@ import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -15,17 +13,13 @@ import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowInsets;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.xyzreader.R;
@@ -168,20 +162,17 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
             if (getIntent() != null && getIntent().getData() != null) {
                 mStartId = ItemsContract.Items.getItemId(getIntent().getData());
                 mSelectedItemId = mStartId;
-                Log.i(TAG, "StartId: "+mStartId);
             }
         }
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        Log.i(TAG, "onCreateLoader");
         return ArticleLoader.newAllArticlesInstance(this);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        Log.i(TAG, "onLoadFinished");
         mCursor = cursor;
         mPagerAdapter.notifyDataSetChanged();
 
@@ -204,9 +195,8 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
-        Log.i(TAG, "onLoaderReset");
-        /*mCursor = null;
-        mPagerAdapter.notifyDataSetChanged();*/
+        mCursor = null;
+        mPagerAdapter.notifyDataSetChanged();
     }
 
     private void onPageChanged(int page){
@@ -267,8 +257,8 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         public Fragment getItem(int position) {
             mCursor.moveToPosition(position);
             Bundle args = new Bundle();
-            args.putString(ArticleBody.TEXT,mCursor.getString(ArticleLoader.Query.BODY));
-            ArticleBody fragment = new ArticleBody();
+            args.putString(ArticleBodyFragment.TEXT,mCursor.getString(ArticleLoader.Query.BODY));
+            ArticleBodyFragment fragment = new ArticleBodyFragment();
             fragment.setArguments(args);
             return fragment;
         }
