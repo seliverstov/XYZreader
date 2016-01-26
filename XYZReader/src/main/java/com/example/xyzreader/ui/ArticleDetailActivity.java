@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,8 @@ import com.squareup.picasso.Picasso;
  * An activity representing a single Article detail screen, letting you swipe between articles.
  */
 public class ArticleDetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+    private static final String TAG = ArticleDetailActivity.class.getSimpleName();
+
 
     private Cursor mCursor;
     private long mStartId;
@@ -165,17 +168,20 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
             if (getIntent() != null && getIntent().getData() != null) {
                 mStartId = ItemsContract.Items.getItemId(getIntent().getData());
                 mSelectedItemId = mStartId;
+                Log.i(TAG, "StartId: "+mStartId);
             }
         }
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        Log.i(TAG, "onCreateLoader");
         return ArticleLoader.newAllArticlesInstance(this);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+        Log.i(TAG, "onLoadFinished");
         mCursor = cursor;
         mPagerAdapter.notifyDataSetChanged();
 
@@ -187,6 +193,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
                 if (mCursor.getLong(ArticleLoader.Query._ID) == mStartId) {
                     final int position = mCursor.getPosition();
                     mViewPager.setCurrentItem(position, false);
+                    onPageChanged(position);
                     break;
                 }
                 mCursor.moveToNext();
@@ -197,11 +204,13 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
+        Log.i(TAG, "onLoaderReset");
         /*mCursor = null;
         mPagerAdapter.notifyDataSetChanged();*/
     }
 
     private void onPageChanged(int page){
+        Log.i(TAG, "onPageChanged "+page);
         if (mCursor!=null) mCursor.moveToPosition(page);
         mTitle.setText(mCursor.getString(ArticleLoader.Query.TITLE));
         mByline.setText(Html.fromHtml(
