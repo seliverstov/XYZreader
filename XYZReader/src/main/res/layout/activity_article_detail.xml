@@ -30,6 +30,8 @@
                 android:background="@color/photo_placeholder"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
+                android:layout_marginLeft="@dimen/article_photo_horiz_margin"
+                android:layout_marginRight="@dimen/article_photo_horiz_margin"
                 />
 
 
