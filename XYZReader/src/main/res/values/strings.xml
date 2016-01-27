@@ -10,4 +10,6 @@
     <string name="up">Up</string>
     <string name="article_photo">Article photo</string>
 
+    <string name="article_photo_transition_name" translatable="false" >article_photo</string>
+
 </resources>

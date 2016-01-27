@@ -25,6 +25,7 @@
 
             <com.example.xyzreader.ui.DynamicHeightImageView
                 android:id="@+id/article_photo"
+                android:transitionName="@string/article_photo_transition_name"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@color/photo_placeholder"

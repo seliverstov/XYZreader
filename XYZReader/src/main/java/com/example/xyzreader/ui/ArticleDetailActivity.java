@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -205,7 +206,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
     }
 
     private void onPageChanged(int page){
-        Log.i(TAG, "onPageChanged "+page);
+        Log.i(TAG, "onPageChanged " + page);
         if (mCursor!=null) mCursor.moveToPosition(page);
         mTitle.setText(mCursor.getString(ArticleLoader.Query.TITLE));
         mByline.setText(Html.fromHtml(
@@ -285,5 +286,17 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         super.onRestoreInstanceState(savedInstanceState);
         long id = savedInstanceState.getLong(STORED_SELECTED_ITEM);
         if (id > 0) mSelectedItemId=id;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home: {
+                supportFinishAfterTransition();
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
