@@ -209,14 +209,15 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         Log.i(TAG, "onPageChanged " + page);
         if (mCursor!=null) mCursor.moveToPosition(page);
         mTitle.setText(mCursor.getString(ArticleLoader.Query.TITLE));
-        mByline.setText(Html.fromHtml(
-                DateUtils.getRelativeTimeSpanString(
+        mByline.setText(
+                String.format(
+                        getString(R.string.byline),
+                        DateUtils.getRelativeTimeSpanString(
                         mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
                         System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
-                        DateUtils.FORMAT_ABBREV_ALL).toString()
-                        + " by <font color='#ffffff'>"
-                        + mCursor.getString(ArticleLoader.Query.AUTHOR)
-                        + "</font>"));
+                        DateUtils.FORMAT_ABBREV_ALL).toString(),
+                        mCursor.getString(ArticleLoader.Query.AUTHOR)
+                ));
         Picasso.with(this).load(mCursor.getString(ArticleLoader.Query.PHOTO_URL)).into(mPhoto);
         mCollapsingToolbar.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
         mCollapsingToolbar.setExpandedTitleTextAppearance(R.style.TransparentText);

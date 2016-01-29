@@ -28,8 +28,22 @@
         <item name="toolbarStyle">@style/Toolbar</item>
     </style>
 
-    <style name="ListActivity" parent="Theme.Bacon"></style>
-    <style name="DetailsActivity" parent="Theme.Bacon"></style>
+    <style name="ListActivity" parent="Theme.Bacon">
+        <item name="android:windowExitTransition">@android:transition/explode</item>
+    </style>
+
+    <style name="DetailsActivity" parent="Theme.AppCompat.Light.DialogWhenLarge" >
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+        <item name="divider">@color/divider</item>
+        <item name="toolbarStyle">@style/Toolbar</item>
+    </style>
 
     <style name="Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="background">?attr/colorPrimary</item>

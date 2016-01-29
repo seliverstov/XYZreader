@@ -11,5 +11,6 @@
     <string name="article_photo">Article photo</string>
 
     <string name="article_photo_transition_name" translatable="false" >article_photo</string>
+    <string name="byline"  formatted="false">%s by %s</string>
 
 </resources>

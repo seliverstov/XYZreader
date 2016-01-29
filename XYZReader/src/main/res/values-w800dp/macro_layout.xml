@@ -2,8 +2,13 @@
     <!-- list -->
     <dimen name="list_side_margin">64dp</dimen>
     <dimen name="list_toolbar_side_margin">52dp</dimen> <!-- minus 64 - 12 -->
-    <integer name="list_column_count">3</integer>
 
     <!-- detail -->
     <dimen name="detail_card_max_width">704dp</dimen>
+
+    <integer name="list_column_count">3</integer>
+    <dimen name="details_horizontal_margin">0dp</dimen>
+    <style name="ListActivity" parent="Theme.Bacon">
+        <item name="android:windowExitTransition">@android:transition/no_transition</item>
+    </style>
 </resources>

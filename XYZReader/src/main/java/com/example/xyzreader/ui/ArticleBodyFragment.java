@@ -22,7 +22,7 @@ public class ArticleBodyFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.article_body,container,false);
         TextView articleBody = (TextView)view.findViewById(R.id.article_body);
-        articleBody.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
+        //articleBody.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
         Bundle args = getArguments();
         if (args!=null) articleBody.setText(Html.fromHtml(args.getString(TEXT)));
         return view;

@@ -15,5 +15,5 @@
     <dimen name="detail_body_top_margin">16dp</dimen>
     <dimen name="detail_body_bottom_margin">32dp</dimen>
 
-    <dimen name="article_photo_horiz_margin">0dp</dimen>
+
 </resources>
