@@ -62,8 +62,6 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         if (actionBar!=null){
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
-/*            actionBar.setDisplayUseLogoEnabled(true);
-            actionBar.setIcon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher));*/
             actionBar.setTitle(getString(R.string.app_name));
         }
 

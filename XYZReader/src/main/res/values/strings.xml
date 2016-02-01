@@ -9,7 +9,7 @@
     <string name="article_photo">Article photo</string>
 
     <string name="article_photo_transition_name" translatable="false" >article_photo</string>
-    <string name="byline"  formatted="false">%1s by %2s</string>
+    <string name="byline">%1$s by %2$s</string>
     <string name="error">An error occurred :( Please try again later.</string>
     <string name="offline">You are offline! Check you network connection.</string>
 
