@@ -97,25 +97,9 @@
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
         android:src="@drawable/ic_share"
+        app:pressedTranslationZ="@dimen/fab_pressedTranslationZ"
         app:elevation="@dimen/fab_elevation"
+        app:rippleColor="@android:color/white"
         android:contentDescription="@string/action_share" />
-
-    <!--
-    <FrameLayout
-        android:id="@+id/up_container"
-        android:background="@android:color/transparent"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
-
-        <ImageButton
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:id="@+id/action_up"
-            android:layout_width="56dp"
-            android:layout_height="?actionBarSize"
-            android:background="?selectableItemBackgroundBorderless"
-            android:contentDescription="@string/up"
-            android:src="@drawable/ic_arrow_back" />
-    </FrameLayout>
-    -->
 
 </android.support.design.widget.CoordinatorLayout>
