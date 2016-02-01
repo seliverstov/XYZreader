@@ -9,6 +9,8 @@ import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
@@ -41,6 +43,7 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
     private static final String TAG = ArticleListActivity.class.getSimpleName();
 
     private Toolbar mToolbar;
+    private CoordinatorLayout mCoordinatorLayout;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
 
@@ -50,6 +53,8 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
+
+        mCoordinatorLayout = (CoordinatorLayout)findViewById(R.id.coordinator_layout);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -101,6 +106,16 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         public void onReceive(Context context, Intent intent) {
             if (UpdaterService.BROADCAST_ACTION_STATE_CHANGE.equals(intent.getAction())) {
                 mIsRefreshing = intent.getBooleanExtra(UpdaterService.EXTRA_REFRESHING, false);
+                if (intent.getBooleanExtra(UpdaterService.EXTRA_ERROR, false)){
+                    Snackbar snackbar = Snackbar
+                            .make(mCoordinatorLayout, getString(R.string.error), Snackbar.LENGTH_SHORT);
+                    snackbar.show();
+                }
+                if (intent.getBooleanExtra(UpdaterService.EXTRA_OFFLINE, false)){
+                    Snackbar snackbar = Snackbar
+                            .make(mCoordinatorLayout, getString(R.string.offline), Snackbar.LENGTH_SHORT);
+                    snackbar.show();
+                }
                 updateRefreshingUI();
             }
         }
