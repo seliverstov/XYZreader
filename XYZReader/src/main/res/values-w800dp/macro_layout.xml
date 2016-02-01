@@ -1,6 +1,6 @@
 <resources>
     <dimen name="list_side_margin">64dp</dimen>
-    <integer name="list_column_count">3</integer>
+    <integer name="list_column_count">4</integer>
     <dimen name="details_horizontal_margin">0dp</dimen>
     <style name="ListActivity" parent="Theme.Bacon">
         <item name="android:windowExitTransition">@android:transition/no_transition</item>

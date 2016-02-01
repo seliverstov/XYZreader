@@ -1,11 +1,8 @@
 package com.example.xyzreader.ui;
 
 import android.content.Context;
-import android.media.Image;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-
-import com.android.volley.toolbox.NetworkImageView;
 
 public class DynamicHeightImageView extends ImageView {
     private float mAspectRatio = 1.5f;

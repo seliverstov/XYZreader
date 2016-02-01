@@ -1,9 +1,8 @@
 package com.example.xyzreader.ui;
 
-import android.app.Fragment;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,7 @@ import com.example.xyzreader.R;
 /**
  * Created by a.g.seliverstov on 21.01.2016.
  */
-public class ArticleBodyFragment extends Fragment{
+public class ArticleBodyFragment extends Fragment {
     public static final String TEXT = ArticleBodyFragment.class.getCanonicalName()+".TEXT";
     @Nullable
     @Override
